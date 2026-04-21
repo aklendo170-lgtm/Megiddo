@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Megiddo Cafe & Bakery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script>
+    tailwind.config = { theme: { extend: { colors: { 'brand-bg': '#EAE6DF', 'brand-card': '#F4F1EA', 'brand-dark': '#2A2825', 'brand-accent': '#C27A5B' }, fontFamily: { serif: ['"Cormorant Garamond"', 'serif'], sans: ['"Montserrat"', 'sans-serif'] } } } }
+  </script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #EAE6DF;
+      color: #2A2825;
+    }
+
+    .parallax-bg {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #EAE6DF
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #2A2825;
+      border-radius: 4px
+    }
+
+    .img-zoom {
+      overflow: hidden
+    }
+
+    .img-zoom img {
+      transition: transform .7s ease
+    }
+
+    .img-zoom:hover img {
+      transform: scale(1.05)
+    }
+
+    .hero-overlay {
+      background: linear-gradient(to bottom, rgba(30, 25, 20, .6) 0%, rgba(30, 25, 20, .3) 55%, rgba(234, 230, 223, .9) 92%, rgba(234, 230, 223, 1) 100%)
+    }
+
+    .hero-title {
+      text-shadow: 0 2px 28px rgba(0, 0, 0, .6), 0 1px 4px rgba(0, 0, 0, .4)
+    }
+
+    .hero-sub {
+      text-shadow: 0 1px 10px rgba(0, 0, 0, .55)
+    }
+
+    .star {
+      color: #C27A5B;
+      font-size: 14px
+    }
+
+    .review-card {
+      background: #F4F1EA;
+      border: 1px solid rgba(42, 40, 37, .08);
+      border-radius: 16px;
+      padding: 28px;
+      position: relative
+    }
+
+    .review-card::before {
+      content: '\201C';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 72px;
+      color: #C27A5B;
+      opacity: .25;
+      position: absolute;
+      top: -8px;
+      left: 16px;
+      line-height: 1
+    }
+
+    .press-badge {
+      background: #2A2825;
+      color: #EAE6DF;
+      font-size: 10px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px
+    }
+
+    .insta-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease
+    }
+
+    .insta-grid .cell:hover img {
+      transform: scale(1.07)
+    }
+
+    .insta-grid .cell {
+      overflow: hidden;
+      border-radius: 12px
+    }
+
+    .price-tag {
+      background: #2A2825;
+      color: #EAE6DF;
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 100px;
+      letter-spacing: .05em;
+      margin-left: 8px;
+      vertical-align: middle;
+      white-space: nowrap
+    }
+
+    .badge-dog {
+      background: #C27A5B22;
+      color: #7a4535;
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 100px;
+      border: 1px solid #C27A5B44
+    }
+  </style>
+</head>
+
+<body class="font-sans antialiased overflow-x-hidden">
+
+  <nav
+    class="fixed w-full z-50 bg-brand-bg/90 backdrop-blur-md border-b border-brand-dark/10 py-4 px-6 md:px-12 flex justify-between items-center">
+    <a href="#" class="font-serif text-3xl italic font-semibold">Megiddo.</a>
+    <div class="hidden md:flex gap-8 text-xs tracking-[.2em] uppercase font-medium">
+      <a href="#menu" class="hover:text-brand-accent transition">Śniadania</a>
+      <a href="#napoje" class="hover:text-brand-accent transition">Napoje</a>
+      <a href="#opinie" class="hover:text-brand-accent transition">Opinie</a>
+      <a href="#o-nas" class="hover:text-brand-accent transition">O nas</a>
+      <a href="#kontakt" class="hover:text-brand-accent transition">Kontakt</a>
+    </div>
+    <a href="https://maps.google.com/?q=Kupa+14+Krakow" target="_blank"
+      class="bg-brand-dark text-brand-bg px-5 py-2.5 rounded-full text-xs tracking-widest uppercase font-semibold hover:bg-brand-accent transition-all duration-300">
+      Jak dojechać
+    </a>
+  </nav>
+
+  <header class="relative h-screen flex items-center justify-center parallax-bg"
+    style="background-image:url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=2000')">
+    <div class="absolute inset-0 hero-overlay"></div>
+    <div class="relative z-10 text-center px-4" data-aos="zoom-out" data-aos-duration="1400">
+      <div
+        class="mx-auto w-20 h-20 border-2 border-white/60 rounded-full flex items-center justify-center mb-6 bg-black/10">
+        <span class="font-serif italic text-white text-lg hero-sub">megiddo</span>
+      </div>
+      <h1 class="text-7xl md:text-9xl font-serif text-white mb-5 hero-title">Kazimierz.</h1>
+      <p class="text-white text-sm md:text-base tracking-[.3em] uppercase max-w-xl mx-auto font-light hero-sub mb-8">
+        Specialty Coffee & Piekarnia<br><span class="opacity-75">ul. Kupa 14 · Kraków</span>
+      </p>
+      <div class="flex flex-wrap justify-center gap-3 mt-2">
+        <span
+          class="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-sm border border-white/30 text-white text-xs px-4 py-2 rounded-full hero-sub">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="#C27A5B">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+          </svg>
+          4.6 / 5 · Google (396 opinii)
+        </span>
+        <span
+          class="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-sm border border-white/30 text-white text-xs px-4 py-2 rounded-full hero-sub">
+          Pies mile widziany
+        </span>
+        <span
+          class="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-sm border border-white/30 text-white text-xs px-4 py-2 rounded-full hero-sub">
+          Specialty Coffee
+        </span>
+      </div>
+    </div>
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+      <a href="#menu">
+        <svg class="w-6 h-6 text-white opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <section class="py-10 bg-brand-dark overflow-hidden" data-aos="fade-up">
+    <div
+      class="flex gap-16 items-center px-12 flex-wrap justify-center md:flex-nowrap md:justify-between max-w-5xl mx-auto">
+      <div class="text-center">
+        <p class="font-serif italic text-brand-accent text-4xl mb-1">4.6★</p>
+        <p class="text-brand-bg/60 text-xs tracking-widest uppercase">Google · 396 opinii</p>
+      </div>
+      <div class="hidden md:block w-px h-10 bg-white/10"></div>
+      <div class="text-center">
+        <p class="font-serif italic text-brand-accent text-4xl mb-1">6 100+</p>
+        <p class="text-brand-bg/60 text-xs tracking-widest uppercase">Obserwujących · Instagram</p>
+      </div>
+      <div class="hidden md:block w-px h-10 bg-white/10"></div>
+      <div class="text-center">
+        <p class="font-serif italic text-brand-accent text-4xl mb-1">od 2019</p>
+        <p class="text-brand-bg/60 text-xs tracking-widest uppercase">Na Kazimierzu</p>
+      </div>
+      <div class="hidden md:block w-px h-10 bg-white/10"></div>
+      <div class="text-center">
+        <p class="font-serif italic text-brand-accent text-4xl mb-1">Top 54</p>
+        <p class="text-brand-bg/60 text-xs tracking-widest uppercase">European Coffee Trip · Kraków</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-5xl md:text-6xl font-serif italic mb-3">Śniadania</h2>
+      <p class="text-xs tracking-[.2em] uppercase opacity-50">Serwowane 8:00 – 14:00 · Do każdego śniadania chleb gratis
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-10 items-start">
+
+      <div class="space-y-10" data-aos="fade-right">
+        <div class="group cursor-pointer">
+          <div class="flex items-baseline justify-between mb-1">
+            <h3 class="text-base font-semibold tracking-widest uppercase group-hover:text-brand-accent transition">
+              Szakszuka</h3>
+            <span class="price-tag">38 zł</span>
+          </div>
+          <p class="text-sm opacity-60 leading-relaxed">3 jajka / domowy sos pomidorowy / ajvar / ser feta / szczypiorek
+            / chleb z naszej piekarni</p>
+        </div>
+        <div class="group cursor-pointer">
+          <div class="flex items-baseline justify-between mb-1">
+            <h3 class="text-base font-semibold tracking-widest uppercase group-hover:text-brand-accent transition">Omlet
+              Francuski #1</h3>
+            <span class="price-tag">36 zł</span>
+          </div>
+          <p class="text-sm opacity-60 leading-relaxed">2 jajka / ser provolone / pesto z suszonych pomidorów / pistacje
+            / silgochu</p>
+        </div>
+        <div class="group cursor-pointer">
+          <div class="flex items-baseline justify-between mb-1">
+            <h3 class="text-base font-semibold tracking-widest uppercase group-hover:text-brand-accent transition">Omlet
+              Francuski #2</h3>
+            <span class="price-tag">36 zł</span>
+          </div>
+          <p class="text-sm opacity-60 leading-relaxed">2 jajka / ser oscypek / chleb z naszej piekarni / dżem z
+            czerwoną porzeczką / chilli</p>
+        </div>
+        <div class="group cursor-pointer">
+          <div class="flex items-baseline justify-between mb-1">
+            <h3 class="text-base font-semibold tracking-widest uppercase group-hover:text-brand-accent transition">
+              Frittata</h3>
+            <span class="price-tag">34 zł</span>
+          </div>
+          <p class="text-sm opacity-60 leading-relaxed">2 jajka / cukinia / szpinak / ser feta / chilli crunch / natka
+            pietruszki / kolendra</p>
+        </div>
+        <div class="group cursor-pointer">
+          <div class="flex items-baseline justify-between mb-1">
+            <h3 class="text-base font-semibold tracking-widest uppercase group-hover:text-brand-accent transition">
+              Orzotto</h3>
+            <span class="price-tag">32 zł</span>
+          </div>
+          <p class="text-sm opacity-60 leading-relaxed">kasza / szpinak / sos śmietanowy / orzeszki pini / pecorino
+            romano</p>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-4" data-aos="zoom-in" data-aos-delay="100">
+        <div class="img-zoom rounded-2xl" style="height:260px">
+          <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=800" alt="Kawiarnia"
+            class="w-full h-full object-cover rounded-2xl">
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="img-zoom rounded-xl" style="height:150px">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=600" alt="Kawa"
+              class="w-full h-full object-cover rounded-xl">
+          </div>
+          <div class="img-zoom rounded-xl" style="height:150px;margin-top:20px">
+            <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=600" alt="Śniadanie"
+              class="w-full h-full object-cover rounded-xl">
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-10" data-aos="fade-left">
+        <div class="group cursor-pointer">
+          <div class="flex items-baseline justify-between mb-1">
+            <h3 class="text-base font-semibold tracking-widest uppercase group-hover:text-brand-accent transition">Dutch
+              Baby #1</h3>
+            <span class="price-tag">42 zł</span>
+          </div>
+          <p class="text-sm opacity-60 leading-relaxed">gravlax / pomarańcza / ogórek / fenkuł / cytrusowy creme fraiche
+          </p>
+        </div>
+        <div class="group cursor-pointer">
+          <div class="flex items-baseline justify-between mb-1">
+            <h3 class="text-base font-semibold tracking-widest uppercase group-hover:text-brand-accent transition">Dutch
+              Baby #2</h3>
+            <span class="price-tag">38 zł</span>
+          </div>
+          <p class="text-sm opacity-60 leading-relaxed">gruszka konfitowana w hibiskusie / crunch / gorzka czekolada /
+            mascarpone</p>
+        </div>
+        <div class="group cursor-pointer border-t border-brand-dark/10 pt-8">
+          <div class="flex items-baseline justify-between mb-1">
+            <h3 class="text-base font-semibold tracking-widest uppercase group-hover:text-brand-accent transition">
+              Talerz Pieczywa</h3>
+            <span class="price-tag">18 zł</span>
+          </div>
+          <p class="text-sm opacity-60 leading-relaxed">ubite masło / pistacje</p>
+        </div>
+        <div class="mt-6 p-5 bg-brand-card rounded-2xl border border-white text-xs space-y-2 opacity-70">
+          <p class="tracking-widest uppercase font-semibold">Praktyczne info</p>
+          <p>Zamówienia przy barze · lista alergenów przy barze</p>
+          <p>Płatność kartą · Bez rezerwacji</p>
+          <p>Pies mile widziany — w środku i na zewnątrz</p>
+          <p>Parking płatny w okolicy</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HAND BREW & HERBATY -->
+  <section id="napoje" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+    <div class="text-center mb-14" data-aos="fade-up">
+      <h2 class="text-5xl md:text-6xl font-serif italic mb-3">Napoje</h2>
+      <p class="text-xs tracking-[.2em] uppercase opacity-50">Specialty coffee · Hand brew · Herbaty</p>
+    </div>
+
+    <!-- dwie główne kolumny równej wysokości -->
+    <div class="grid lg:grid-cols-2 gap-16 items-stretch">
+
+      <!-- HAND BREW -->
+      <div class="flex flex-col" data-aos="fade-right">
+        <div class="flex items-baseline gap-3 mb-8">
+          <h3 class="text-2xl font-serif italic">Hand Brew</h3>
+          <span class="text-[10px] tracking-[.15em] uppercase opacity-40">250ml</span>
+        </div>
+
+        <!-- MERON -->
+        <p class="text-[9px] tracking-[.3em] uppercase font-semibold opacity-35 mb-3">Meron</p>
+        <div class="space-y-3 mb-6">
+          <div class="group cursor-pointer flex items-start justify-between gap-4">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-wide group-hover:text-brand-accent transition"><span class="text-brand-accent">Panama</span> Lamastus Plano | Gesha</p>
+              <p class="text-[10px] opacity-40 uppercase tracking-wide mt-0.5">Anaerobic Slow Dry</p>
+              <p class="text-xs opacity-55 mt-0.5">Apricot · Pear · Roasted Lemon</p>
+            </div>
+            <span class="price-tag shrink-0 mt-0.5">38 zł</span>
+          </div>
+          <div class="group cursor-pointer flex items-start justify-between gap-4">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-wide group-hover:text-brand-accent transition"><span class="text-brand-accent">Panama</span> Janson | Gesha</p>
+              <p class="text-[10px] opacity-40 uppercase tracking-wide mt-0.5">Natural</p>
+              <p class="text-xs opacity-55 mt-0.5">Black Tea · Tangerine · Orange Blossom</p>
+            </div>
+            <span class="price-tag shrink-0 mt-0.5">35 zł</span>
+          </div>
+          <div class="group cursor-pointer flex items-start justify-between gap-4">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-wide group-hover:text-brand-accent transition"><span class="text-brand-accent">Panama</span> Finca Deborah | Gesha</p>
+              <p class="text-[10px] opacity-40 uppercase tracking-wide mt-0.5">Natural Nitrogen Anaerobic</p>
+              <p class="text-xs opacity-55 mt-0.5">Red Orange · Nectarine · White Wild Cherry</p>
+            </div>
+            <span class="price-tag shrink-0 mt-0.5">45 zł</span>
+          </div>
+        </div>
+
+        <!-- LA CABRA -->
+        <div class="border-t border-brand-dark/10 pt-5 mb-6">
+          <p class="text-[9px] tracking-[.3em] uppercase font-semibold opacity-35 mb-3">La Cabra</p>
+          <div class="space-y-3">
+            <div class="group cursor-pointer flex items-start justify-between gap-4">
+              <div>
+                <p class="text-sm font-semibold uppercase tracking-wide group-hover:text-brand-accent transition"><span class="text-brand-accent">Ethiopia</span> OMA Gesha Village</p>
+                <p class="text-[10px] opacity-40 uppercase tracking-wide mt-0.5">Natural</p>
+                <p class="text-xs opacity-55 mt-0.5">Pollen · Bergamote · Tangerine</p>
+              </div>
+              <span class="price-tag shrink-0 mt-0.5">36 zł</span>
+            </div>
+            <div class="group cursor-pointer flex items-start justify-between gap-4">
+              <div>
+                <p class="text-sm font-semibold uppercase tracking-wide group-hover:text-brand-accent transition"><span class="text-brand-accent">Colombia</span> Sudan Rume</p>
+                <p class="text-[10px] opacity-40 uppercase tracking-wide mt-0.5">Natural</p>
+                <p class="text-xs opacity-55 mt-0.5">Passion Fruit · Baby Mango · Black Tea</p>
+              </div>
+              <span class="price-tag shrink-0 mt-0.5">34 zł</span>
+            </div>
+            <div class="group cursor-pointer flex items-start justify-between gap-4">
+              <div>
+                <p class="text-sm font-semibold uppercase tracking-wide group-hover:text-brand-accent transition"><span class="text-brand-accent">Colombia</span> Sudan Rume</p>
+                <p class="text-[10px] opacity-40 uppercase tracking-wide mt-0.5">Washed</p>
+                <p class="text-xs opacity-55 mt-0.5">Fermented Lemon · Mulled Wine · Spices</p>
+              </div>
+              <span class="price-tag shrink-0 mt-0.5">34 zł</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- POMA + MODULE -->
+        <div class="border-t border-brand-dark/10 pt-5 mb-6">
+          <p class="text-[9px] tracking-[.3em] uppercase font-semibold opacity-35 mb-3">Poma · Module</p>
+          <div class="space-y-3">
+            <div class="group cursor-pointer flex items-start justify-between gap-4">
+              <div>
+                <p class="text-sm font-semibold uppercase tracking-wide group-hover:text-brand-accent transition"><span class="text-brand-accent">Ethiopia</span> Gesha Village</p>
+                <p class="text-[10px] opacity-40 uppercase tracking-wide mt-0.5">Washed Heirloom</p>
+                <p class="text-xs opacity-55 mt-0.5">Peach · Brioche · Apple Tree Blossom</p>
+              </div>
+              <span class="price-tag shrink-0 mt-0.5">40 zł</span>
+            </div>
+            <div class="group cursor-pointer flex items-start justify-between gap-4">
+              <div>
+                <p class="text-sm font-semibold uppercase tracking-wide group-hover:text-brand-accent transition"><span class="text-brand-accent">Colombia</span> Ombligon</p>
+                <p class="text-[10px] opacity-40 uppercase tracking-wide mt-0.5">Competition Anaerobic Natural</p>
+                <p class="text-xs opacity-55 mt-0.5">Wild Cherry · Marzipan · Brown Sugar</p>
+              </div>
+              <span class="price-tag shrink-0 mt-0.5">42 zł</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- zdjęcie wypełnia dół lewej kolumny -->
+        <div class="img-zoom rounded-2xl mt-auto" style="height:180px">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=900" class="w-full h-full object-cover rounded-2xl" alt="Hand brew">
+        </div>
+      </div>
+
+      <!-- HERBATY -->
+      <div class="flex flex-col" data-aos="fade-left">
+        <div class="flex items-baseline gap-3 mb-8">
+          <h3 class="text-2xl font-serif italic">Herbaty</h3>
+        </div>
+
+        <!-- STYL EUROPEJSKI -->
+        <p class="text-[9px] tracking-[.3em] uppercase font-semibold opacity-35 mb-3">Styl Europejski · 1× 500ml</p>
+        <div class="space-y-3 mb-6">
+          <div class="group cursor-pointer flex items-start justify-between gap-4">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-wide group-hover:text-brand-accent transition">Osmanthus Golden Tips <span class="opacity-45 font-normal text-xs normal-case">Yunnan | Chiny</span></p>
+              <p class="text-[10px] opacity-40 uppercase tracking-wide mt-0.5">Czarna Herbata</p>
+              <p class="text-xs opacity-55 mt-0.5">Osmanthus · Morela · Brzoskwinia</p>
+            </div>
+            <span class="price-tag shrink-0 mt-0.5">19 zł</span>
+          </div>
+          <div class="group cursor-pointer flex items-start justify-between gap-4">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-wide group-hover:text-brand-accent transition">Sencha Yamabuki <span class="opacity-45 font-normal text-xs normal-case">Kagoshima | Japonia</span></p>
+              <p class="text-[10px] opacity-40 uppercase tracking-wide mt-0.5">Zielona Herbata</p>
+              <p class="text-xs opacity-55 mt-0.5">Ananas · Melon · Zielone Warzywa</p>
+            </div>
+            <span class="price-tag shrink-0 mt-0.5">20 zł</span>
+          </div>
+          <div class="group cursor-pointer flex items-start justify-between gap-4">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-wide group-hover:text-brand-accent transition">Long Jing <span class="opacity-45 font-normal text-xs normal-case">Zhejiang | Chiny</span></p>
+              <p class="text-[10px] opacity-40 uppercase tracking-wide mt-0.5">Zielona Herbata</p>
+              <p class="text-xs opacity-55 mt-0.5">Prażone Orzechy · Kajmak · Maślane Ciasteczka</p>
+            </div>
+            <span class="price-tag shrink-0 mt-0.5">18 zł</span>
+          </div>
+        </div>
+
+        <!-- STYL GONG FU -->
+        <div class="border-t border-brand-dark/10 pt-5 mb-6">
+          <p class="text-[9px] tracking-[.3em] uppercase font-semibold opacity-35 mb-3">Styl Gong Fu · 5× 100ml</p>
+          <div class="space-y-3">
+            <div class="group cursor-pointer flex items-start justify-between gap-4">
+              <div>
+                <p class="text-sm font-semibold uppercase tracking-wide group-hover:text-brand-accent transition">Milk Oolong <span class="opacity-45 font-normal text-xs normal-case">Nantou | Tajwan</span></p>
+                <p class="text-[10px] opacity-40 uppercase tracking-wide mt-0.5">Herbata Oolong</p>
+                <p class="text-xs opacity-55 mt-0.5">Mleko · Tofi · Morela</p>
+              </div>
+              <span class="price-tag shrink-0 mt-0.5">19 zł</span>
+            </div>
+            <div class="group cursor-pointer flex items-start justify-between gap-4">
+              <div>
+                <p class="text-sm font-semibold uppercase tracking-wide group-hover:text-brand-accent transition">White Ruby <span class="opacity-45 font-normal text-xs normal-case">Nantou | Tajwan</span></p>
+                <p class="text-[10px] opacity-40 uppercase tracking-wide mt-0.5">Biała Herbata</p>
+                <p class="text-xs opacity-55 mt-0.5">Zielone Jabłko · Kamfora · Cyprys</p>
+              </div>
+              <span class="price-tag shrink-0 mt-0.5">26 zł</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- NOTA -->
+        <div class="border-t border-brand-dark/10 pt-5 mb-6">
+          <div class="p-4 bg-brand-card rounded-xl border border-white text-[9px] opacity-55 space-y-0.5 leading-relaxed">
+            <p class="tracking-widest uppercase font-semibold mb-1">Nota</p>
+            <p>Hand Brew · porcja 250ml</p>
+            <p>Herbata europejska · porcja 500ml</p>
+            <p>Herbata Gong Fu · 5 zalewań po 100ml</p>
+          </div>
+        </div>
+
+        <!-- zdjęcie wypełnia dół prawej kolumny -->
+        <div class="grid grid-cols-2 gap-3 mt-auto">
+          <div class="img-zoom rounded-2xl" style="height:180px">
+            <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=600" class="w-full h-full object-cover rounded-2xl" alt="Herbata">
+          </div>
+          <div class="img-zoom rounded-2xl" style="height:180px">
+            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=600" class="w-full h-full object-cover rounded-2xl" alt="Herbata">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section id="opinie" class="py-24 px-6 md:px-12 bg-brand-card">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-14" data-aos="fade-up">
+        <div class="flex items-center justify-center gap-2 mb-3">
+          <span class="star">★★★★★</span>
+          <span class="font-serif text-2xl italic">4.6 / 5</span>
+          <span class="text-sm opacity-50">· 396 opinii Google</span>
+        </div>
+        <h2 class="text-4xl md:text-5xl font-serif italic">Co mówią goście</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-14">
+
+        <div class="review-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="flex gap-0.5 mb-4 mt-2" style="color:#C27A5B;font-size:13px">★★★★★</div>
+          <p class="text-sm leading-relaxed opacity-80 mb-5">Najlepsza kawa jaką piliśmy przez 4 dni w Krakowie — a mamy
+            bardzo wysokie standardy. Barista był super przyjazny, pomógł zamówić wypieki, które też były niesamowite.
+            Flat white idealny.</p>
+          <div class="flex items-center gap-3">
+            <div
+              style="width:36px;height:36px;border-radius:50%;background:#C27A5B22;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#7a4535">
+              SA</div>
+            <div>
+              <p class="text-sm font-semibold">Sarah A.</p>
+              <p class="text-xs opacity-50">Google · Wielka Brytania</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="flex gap-0.5 mb-4 mt-2" style="color:#C27A5B;font-size:13px">★★★★★</div>
+          <p class="text-sm leading-relaxed opacity-80 mb-5">Megiddo to ukryty klejnot Krakowa. Niezwykłe miejsce w
+            podwórzu synagogi — klimat, nowoczesny wystrój i kawa na najwyższym poziomie. Zimna matcha należała do
+            najlepszych, jakie próbowałam.</p>
+          <div class="flex items-center gap-3">
+            <div
+              style="width:36px;height:36px;border-radius:50%;background:#C27A5B22;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#7a4535">
+              MK</div>
+            <div>
+              <p class="text-sm font-semibold">Marta K.</p>
+              <p class="text-xs opacity-50">Google · Polska</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex gap-0.5 mb-4 mt-2" style="color:#C27A5B;font-size:13px">★★★★★</div>
+          <p class="text-sm leading-relaxed opacity-80 mb-5">Przyszliśmy przypadkiem w niedzielę rano — i skończyłem
+            zjadając najlepszy cinnamon roll w życiu. Kawa tiramisu była tak dobra, że nie zdążyliśmy nawet zrobić
+            zdjęcia. Na pewno wrócimy.</p>
+          <div class="flex items-center gap-3">
+            <div
+              style="width:36px;height:36px;border-radius:50%;background:#C27A5B22;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#7a4535">
+              TM</div>
+            <div>
+              <p class="text-sm font-semibold">Thomas M.</p>
+              <p class="text-xs opacity-50">Google · Niemcy</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card" data-aos="fade-up" data-aos-delay="50">
+          <div class="flex gap-0.5 mb-4 mt-2" style="color:#C27A5B;font-size:13px">★★★★★</div>
+          <p class="text-sm leading-relaxed opacity-80 mb-5">Jedno z lepszych miejsc na mapie Krakowa. Atmosfera i dobra
+            kawa sprawiają, że chce się wracać. Rewelacyjny design wnętrza i naczyń. Ceny po droższej stronie, ale warto
+            każdej złotówki.</p>
+          <div class="flex items-center gap-3">
+            <div
+              style="width:36px;height:36px;border-radius:50%;background:#C27A5B22;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#7a4535">
+              AW</div>
+            <div>
+              <p class="text-sm font-semibold">Anna W.</p>
+              <p class="text-xs opacity-50">Google · Polska</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="flex gap-0.5 mb-4 mt-2" style="color:#C27A5B;font-size:13px">★★★★★</div>
+          <p class="text-sm leading-relaxed opacity-80 mb-5">Niesamowite miejsce, świetny klimat, napoje pierwszej
+            klasy, piękny wystrój i niebanalna zastawa. Do tego kompetentna i otwarta obsługa. Polecam z całego serca
+            każdemu, kto jest w Kazimierzu.</p>
+          <div class="flex items-center gap-3">
+            <div
+              style="width:36px;height:36px;border-radius:50%;background:#C27A5B22;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#7a4535">
+              PJ</div>
+            <div>
+              <p class="text-sm font-semibold">Piotr J.</p>
+              <p class="text-xs opacity-50">Google · Polska</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card" data-aos="fade-up" data-aos-delay="250">
+          <div class="flex gap-0.5 mb-4 mt-2" style="color:#C27A5B;font-size:13px">★★★★★</div>
+          <p class="text-sm leading-relaxed opacity-80 mb-5">Bardzo autentyczna kawa z urokiem podwórza. Wnętrze jest
+            naprawdę świetne, a wypieki domowe — szczególnie chałka — są czymś wyjątkowym. Idealne miejsce na spokojne
+            śniadanie z dala od tłumów.</p>
+          <div class="flex items-center gap-3">
+            <div
+              style="width:36px;height:36px;border-radius:50%;background:#C27A5B22;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#7a4535">
+              LF</div>
+            <div>
+              <p class="text-sm font-semibold">Laura F.</p>
+              <p class="text-xs opacity-50">Google · Francja</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-3" data-aos="fade-up">
+        <span class="press-badge">European Coffee Trip · Top 54 Kraków</span>
+        <span class="press-badge">Restaurant Guru · 4.7★ · 349 recenzji</span>
+        <span class="press-badge">Specialty Coffee · Kazimierz</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="instagram" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="text-4xl md:text-5xl font-serif italic mb-2">@megiddo.cafe.bakery</h2>
+      <p class="text-xs tracking-[.2em] uppercase opacity-50">6 100 obserwujących · Instagram</p>
+    </div>
+
+    <div class="insta-grid grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-3" data-aos="fade-up" data-aos-delay="100">
+      <div class="cell col-span-2 row-span-2" style="height:280px">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800" alt="Instagram">
+      </div>
+      <div class="cell" style="height:135px">
+        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=600" alt="Instagram">
+      </div>
+      <div class="cell" style="height:135px">
+        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=600" alt="Instagram">
+      </div>
+      <div class="cell" style="height:135px">
+        <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?q=80&w=600" alt="Instagram">
+      </div>
+      <div class="cell" style="height:135px">
+        <img src="https://images.unsplash.com/photo-1517433367423-c7e5b0f35086?q=80&w=600" alt="Instagram">
+      </div>
+      <div class="cell" style="height:135px">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=600" alt="Instagram">
+      </div>
+      <div class="cell" style="height:135px">
+        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=600" alt="Instagram">
+      </div>
+      <div class="cell" style="height:135px">
+        <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919?q=80&w=600" alt="Instagram">
+      </div>
+      <div class="cell" style="height:135px">
+        <img src="https://images.unsplash.com/photo-1619895092538-128341789043?q=80&w=600" alt="Instagram">
+      </div>
+    </div>
+
+    <div class="text-center mt-8" data-aos="fade-up">
+      <a href="https://www.instagram.com/megiddo.cafe.bakery/" target="_blank"
+        class="inline-block border border-brand-dark/30 text-brand-dark px-8 py-3 rounded-full text-xs tracking-widest uppercase font-semibold hover:bg-brand-dark hover:text-brand-bg transition-all duration-300">
+        Obserwuj na Instagramie
+      </a>
+    </div>
+  </section>
+
+  <section id="o-nas" class="py-24 bg-brand-dark text-brand-bg">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-16 items-center">
+      <div data-aos="fade-right">
+        <h2 class="text-5xl font-serif italic mb-6">Zaczyna się od kawy.</h2>
+        <p class="text-base font-light leading-relaxed opacity-75 mb-6">
+          Specialty coffee w miejscu, które zaczyna się od kawy — nie od bułki. Każdego ranka wybieramy ziarna, kalibrujemy młynek i parzemy z uwagą. Reszta — chałka, wypiek, śniadanie — idzie za tym samym podejściem.
+        </p>
+        <p class="text-base font-light leading-relaxed opacity-75 mb-8">
+          Jesteśmy na Kupa 14, w podwórzu starej synagogi. Wpadnij z psem albo z laptopem — bez rezerwacji, bez pośpiechu.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-8">
+          <span class="badge-dog">Pies mile widziany</span>
+          <span class="badge-dog">Vegan options</span>
+          <span class="badge-dog">Specialty coffee</span>
+          <span class="badge-dog">Własny wypiek</span>
+        </div>
+        <a href="https://www.instagram.com/megiddo.cafe.bakery/" target="_blank"
+          class="inline-block border-b border-brand-accent pb-1 text-sm tracking-widest uppercase hover:text-brand-accent transition">
+          Instagram @megiddo.cafe.bakery
+        </a>
+      </div>
+      <div class="grid grid-cols-2 gap-4 items-end" data-aos="fade-left">
+        <div class="img-zoom rounded-xl" style="height:270px;margin-top:28px">
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=600"
+            class="w-full h-full object-cover rounded-xl">
+        </div>
+        <div class="img-zoom rounded-xl" style="height:270px">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=600"
+            class="w-full h-full object-cover rounded-xl">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt" class="py-20 px-6 md:px-12 max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-10 mb-16">
+      <div data-aos="fade-up">
+        <h4 class="font-serif italic text-2xl mb-4">Adres</h4>
+        <p class="text-sm opacity-60 leading-relaxed">ul. Kupa 14<br>31-057 Kraków, Kazimierz<br><br>
+          <span class="text-xs opacity-50">Parking płatny w okolicy · Pies mile widziany</span>
+        </p>
+      </div>
+      <div data-aos="fade-up" data-aos-delay="100">
+        <h4 class="font-serif italic text-2xl mb-4">Godziny</h4>
+        <p class="text-sm opacity-60 leading-relaxed">Pon – Niedz: 08:00 – 18:00<br>Śniadania do 14:00<br><br>
+          <span class="text-xs opacity-50">Bez rezerwacji · Przyjmujemy karty</span>
+        </p>
+      </div>
+      <div data-aos="fade-up" data-aos-delay="200">
+        <h4 class="font-serif italic text-2xl mb-4">Kontakt</h4>
+        <p class="text-sm opacity-60 leading-relaxed">
+          <a href="https://www.instagram.com/megiddo.cafe.bakery/" class="hover:text-brand-accent transition">IG:
+            @megiddo.cafe.bakery</a><br>
+          <a href="mailto:hello@megiddo.pl" class="hover:text-brand-accent transition">hello@megiddo.pl</a><br><br>
+          <span class="text-xs opacity-50">Brak WiFi · WC na miejscu</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="rounded-2xl overflow-hidden border border-brand-dark/10" style="height:320px" data-aos="fade-up">
+      <iframe
+        src="https://www.openstreetmap.org/export/embed.html?bbox=19.940%2C50.049%2C19.952%2C50.055&layer=mapnik&marker=50.051721%2C19.946462"
+        style="width:100%;height:100%;border:0" loading="lazy" allowfullscreen
+        title="Megiddo Cafe & Bakery — ul. Kupa 14, Kraków">
+      </iframe>
+    </div>
+
+    <div class="mt-6 text-center">
+      <a href="https://maps.google.com/?q=Kupa+14+Krakow" target="_blank"
+        class="inline-block bg-brand-dark text-brand-bg px-8 py-3 rounded-full text-xs tracking-widest uppercase font-semibold hover:bg-brand-accent transition-all duration-300">
+        Otwórz w Google Maps
+      </a>
+    </div>
+  </section>
+
+  <footer class="py-8 px-6 border-t border-brand-dark/10 text-center">
+    <p class="font-serif italic text-2xl mb-1">Megiddo.</p>
+    <p class="text-xs opacity-40 tracking-widest uppercase">Specialty Coffee & Bakery · Kazimierz · Kraków</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({ once: true, offset: 80, easing: 'ease-out-cubic', duration: 700 })</script>
+</body>
+
+</html>
